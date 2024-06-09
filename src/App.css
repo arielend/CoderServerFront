@@ -1,0 +1,19 @@
+.item_shadow{
+    @aply shadow-lg shadow-black/30 shadow-black/20;
+}
+
+.green_button{
+    @apply bg-csGreen hover:bg-black text-black hover:text-csGreen px-5 py-2 border border-black hover:border-csGreen rounded rounded-lg;
+}
+
+.dark_button{
+    @apply bg-black text-csGreen;
+}
+
+.card_button{
+    @apply absolute w-full bottom-0 start-0 py-4 text-button bg-csGreen hover:bg-black text-black hover:text-csGreen text-center;
+}
+
+.nav_link{
+    @apply text-[2rem] text-white hover:text-csGreen;
+}
