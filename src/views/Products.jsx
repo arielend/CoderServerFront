@@ -7,10 +7,12 @@ const Products = () => {
     const [ products, setProducts ] = useState([])
 
     useEffect(()=>{
-        axios("http://localhost:8080/api/products")
+        axios("http://localhost:9000/api/products")
         .then(result => setProducts(result.data.response))
         .catch(error => console.log(error))
     },[])
+
+    console.log('Los productos: ', products)
 
     return(
         <>

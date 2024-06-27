@@ -1,22 +1,15 @@
-import { Link } from 'react-router-dom'
-
-import headerImage from '/images/headerImage.svg'
-import loginIcon from '/images/login_icon.svg'
-import logoutIcon from '/images/logout_icon.svg'
-import userIcon from '/images/user_icon.svg'
-import cartIcon from '/images/cart_icon.svg'
-
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
 
-	const [user, setUser ] = useState({online: true})
+	const [user, setUser ] = useState({online: false})
 
 	return (
 		<header className='flex justify-between items-center w-full py-6 px-8 '>
 			<div className='flex justify-between items-center'>
 				<Link to='/'>
-					<img src={headerImage} className='h-28 me-12'/>
+					<img src='https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/images%2FheaderImage.svg?alt=media&token=7ed650f9-4e73-4f83-93cb-9fc1b9064b37' className='h-28 me-12'/>
 				</Link>
 				<ul className="flex gap-8 text-csGreen">
 					<li>
@@ -33,24 +26,24 @@ const Header = () => {
 						user.online ? <>
 							<li>
 								<Link to='/cart'>
-									<img src={cartIcon} className='h-24'/>
+									<img src='https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Fcart_icon.svg?alt=media&token=4bdd38d2-fcf3-41bd-8c88-02116bf5ccb1' className='h-24'/>
 								</Link>
 							</li>
 							<li>
 								<Link to='/profile'>
-									<img src={userIcon} className='h-20'/>
+									<img src='https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Fuser_icon.svg?alt=media&token=fde90760-8809-46a5-a0ed-1ac290ddd72b' className='h-20'/>
 								</Link>
 							</li>
 							<li>
 								<Link to='/logout'>
-									<img src={logoutIcon} className='h-24'/>
+									<img src='https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Flogout_icon.svg?alt=media&token=2ba042b8-c695-4db9-a116-23278c7758ed' className='h-24'/>
 								</Link>
 							</li>						
 						</> : 
 						<>
 							<li>
 								<Link to='/login'>
-									<img src={loginIcon} className='h-24'/>
+									<img src='https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Flogin_icon.svg?alt=media&token=6bff8f3a-1f32-4f99-81b9-93f2c2655283' className='h-24'/>
 								</Link>
 							</li>
 						</>

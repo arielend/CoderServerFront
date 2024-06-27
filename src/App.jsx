@@ -11,6 +11,7 @@ import Login from './views/Login.jsx'
 import Register from './views/Register.jsx'
 import User from './views/User.jsx'
 import Google from './views/Google.jsx'
+import Verify from './views/Verify.jsx'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Routes>
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
+                <Route path='/verify' element={<Verify/>}/>
                 <Route path='/' element={<Layout />}>
                     <Route index element={<Home />} />
                     <Route path='products' element={<Products />} />
