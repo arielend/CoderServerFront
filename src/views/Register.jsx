@@ -1,6 +1,45 @@
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router'
+import axios from 'axios'
+import Swal from 'sweetalert2'
+import Loader from '../components/Loader/Loader'
+
 const Register = () => {
+
+    const [ email, setEmail ] = useState('')
+    const [ password, setPassword ] = useState('')
+    const [ username, setUsername ] = useState('')
+    const [ photo, setPhoto ] = useState('')
+    const [ isLoading, setIsLoading ] = useState(false)
+    
+    const navigate = useNavigate()
+
+    const registerHandler = async () => {
+
+        setIsLoading(true)
+
+        const data = { email, username, password, photo }
+        const url = 'http://localhost:9000/api/sessions/register'
+        const response = await axios.post(url, data, { withCredentials: true })
+
+        setIsLoading(false)
+
+        if(response?.data.statusCode === 201) {
+            Swal.fire({
+                title: 'Register',
+                text: 'Successful registration!',
+                icon: 'success'
+            })
+            setTimeout(()=>{
+                navigate('/verify')
+            }, 2500)
+        }
+
+    }
+    
     return(
         <div className="flex flex-col justify-center items-center h-[100vh] bg-[url('https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/bg%2FSite_BG.webp?alt=media&token=7ac589cc-94df-4ee6-b1ff-814d81296ff0')] bg-cover bg-fixed">
+            { isLoading && <Loader/> }
             <h1 className="text-white text-center my-2">Create your account.</h1>
             <div className="flex justify-center">
                 <div className="p-12 bg-glass backdrop-blur-sm rounded rounded-xl">
@@ -10,33 +49,65 @@ const Register = () => {
                     <div className="card-body">
                         <form id="login_form" className="flex flex-col gap-8 items-between justify-center">
                             <div className="flex gap-4 justify-center items-center">
-                                <label for="email">
+                                <label htmlFor="email">
                                     <img className="h-[25px]" src="https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Femail_icon.svg?alt=media&token=7c14184b-df41-40e9-abff-89b7a3397890" alt="Email Icon" />
                                 </label>
-                                <input id="email" name="email" type="text" placeholder="type your e-mail" className="text-white h-16 px-4 text-button rounded rounded-lg bg-['rgba(255, 255, 255, 0.379)'] box-shadow-['0 4px 30px rgba(0, 0, 0, 0.1)'] backdropBlur-['(5px)']" />
+                                <input id="email"
+                                    name="email"
+                                    type="text"
+                                    placeholder="type your e-mail"
+                                    className="text-white h-16 px-4 text-button rounded rounded-lg bg-['rgba(255, 255, 255, 0.379)'] box-shadow-['0 4px 30px rgba(0, 0, 0, 0.1)'] backdropBlur-['(5px)']" 
+                                    value={email}
+                                    onChange={(e) => {setEmail(e.target.value)}}
+                                />
                             </div>
 
                             <div className="flex gap-4 justify-center items-center">
-                                <label for="username">
+                                <label htmlFor="username">
                                     <img className="h-[25px]" src="https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Fuser_icon.svg?alt=media&token=fde90760-8809-46a5-a0ed-1ac290ddd72b" alt="User icon" />
                                 </label>
-                                <input id="username" name="username" type="text" placeholder="enter an username" className="text-white h-16 px-4 text-button rounded rounded-lg bg-['rgba(255, 255, 255, 0.379)'] box-shadow-['0 4px 30px rgba(0, 0, 0, 0.1)'] backdropBlur-['(5px)']" />
+                                <input id="username" 
+                                    name="username"
+                                    type="text" 
+                                    placeholder="enter an username" 
+                                    className="text-white h-16 px-4 text-button rounded rounded-lg bg-['rgba(255, 255, 255, 0.379)'] box-shadow-['0 4px 30px rgba(0, 0, 0, 0.1)'] backdropBlur-['(5px)']" 
+                                    value={username}
+                                    onChange={(e) => {setUsername(e.target.value)}}
+                                />
                             </div>
 
                             <div className="flex gap-4 justify-center items-center">
-                                <label for="password">
+                                <label htmlFor="password">
                                     <img src="https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Fpass_icon.svg?alt=media&token=a0276f2b-158a-43e8-86aa-a7fa001d6421" alt="Password Icon" className="h-[25px]" />
                                 </label>
-                                <input id="password" name="password" type="password" className="text-white h-16 px-4 text-button rounded rounded-lg bg-['rgba(255, 255, 255, 0.379)'] box-shadow-['0 4px 30px rgba(0, 0, 0, 0.1)'] backdropBlur-['(5px)']" placeholder="create a password" />
+                                <input id="password" 
+                                    name="password"
+                                    type="password"
+                                    className="text-white h-16 px-4 text-button rounded rounded-lg bg-['rgba(255, 255, 255, 0.379)'] box-shadow-['0 4px 30px rgba(0, 0, 0, 0.1)'] backdropBlur-['(5px)']" placeholder="create a password" 
+                                    value={password}
+                                    onChange={(e) => {setPassword(e.target.value)}}    
+                                />
                             </div>
 
                             <div className="flex gap-4 justify-center items-center">
-                                <img src="https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Fcamera_icon.svg?alt=media&token=4010a93c-65e3-47db-96ea-90684df59179" alt="Camera Icon" className="h-[25px]" />
-                                <input id="photo_url" name="photo_url" type="text" placeholder="Paste url photo" className="text-white h-16 px-4 text-button rounded rounded-lg bg-['rgba(255, 255, 255, 0.379)'] box-shadow-['0 4px 30px rgba(0, 0, 0, 0.1)'] backdropBlur-['(5px)']" />
+                                <label htmlFor="photo_url">
+                                    <img src="https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Fcamera_icon.svg?alt=media&token=4010a93c-65e3-47db-96ea-90684df59179" alt="Camera Icon" className="h-[25px]" />
+                                </label>
+                                <input id="photo_url"
+                                    name="photo_url"
+                                    type="text"
+                                    placeholder="Paste url photo"
+                                    className="text-white h-16 px-4 text-button rounded rounded-lg bg-['rgba(255, 255, 255, 0.379)'] box-shadow-['0 4px 30px rgba(0, 0, 0, 0.1)'] backdropBlur-['(5px)']" 
+                                    value={photo}
+                                    onChange={(e) => {setPhoto(e.target.value)}}
+                                />
                             </div>
 
                             <div className="flex gap-4 justify-center items-center">
-                                <button type="button" id="btn_register" className="green_button text-button" >
+                                <button id="btn_register"
+                                    type="button"                                    
+                                    className="green_button text-button"
+                                    onClick={registerHandler} >
                                     Register
                                 </button>
                             </div>

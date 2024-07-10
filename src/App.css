@@ -1,5 +1,5 @@
 .item_shadow{
-    @aply box-shado-card;
+    @aply box-shadow-card;
 }
 
 .green_button{
@@ -11,7 +11,7 @@
 }
 
 .image_button{
-    @apply flex justify-center items-center h-16 w-16 bg-black hover:bg-darkgrey border border-csGreen rounded rounded-full;
+    @apply flex justify-center items-center h-12 w-12 bg-black hover:bg-darkgrey border border-csGreen rounded rounded-full;
 }
 
 .card_button{
@@ -19,7 +19,7 @@
 }
 
 .nav_link{
-    @apply text-[2rem] text-white hover:text-csGreen drop-shadow-none hover:drop-shadow-green;
+    @apply text-[1.4rem] text-white hover:text-csGreen drop-shadow-none hover:drop-shadow-green;
 }
 
 /* .glass_card{

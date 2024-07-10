@@ -35,9 +35,9 @@ export default {
       orange: '#E54A1A'
     },
     fontSize: {
-      price: '2.5rem',
-      card_title: '2.5rem',
-      button: '1.8rem'
+      price: '1.3rem',
+      card_title: '1.5rem',
+      button: '1rem'
     },
     fontWeight:{
       regular: 400,
