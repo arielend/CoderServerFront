@@ -134,7 +134,7 @@ const Login = () => {
                             </a>
                         </div>
                         <div className="flex justify-center">
-                            <a href="#" className="text-csGreen text-button ms-4" style={{ textDecoration: 'none', }} >
+                            <a href="/password" className="text-csGreen text-button ms-4" style={{ textDecoration: 'none', }} >
                                 Forgot your password?
                             </a>
                         </div>

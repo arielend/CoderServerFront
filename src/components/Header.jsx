@@ -49,7 +49,7 @@ const Header = () => {
 		<header className='flex justify-between items-center w-full py-4 px-6 '>
 			<div className='flex justify-between items-center'>
 				<Link to='/'>
-					<img src='https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/images%2FheaderImage.svg?alt=media&token=7ed650f9-4e73-4f83-93cb-9fc1b9064b37' className='h-20 me-12'/>
+					<img src='https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/images%2FHeaderCS.svg?alt=media&token=276c81fb-3c81-4937-90a9-584b030b3311' className='h-20 me-12'/>
 				</Link>
 				<ul className="flex gap-8 text-csGreen">
 					<li>
@@ -85,7 +85,7 @@ const Header = () => {
 						<>
 							<li>
 								<Link to='/login'>
-									<img src='https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Flogin_icon.svg?alt=media&token=6bff8f3a-1f32-4f99-81b9-93f2c2655283' className='h-16'/>
+									<img src='https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Flogin_icon.svg?alt=media&token=707dea11-21eb-428e-ac87-011bbea3e0fc' className='h-16'/>
 								</Link>
 							</li>
 						</>
