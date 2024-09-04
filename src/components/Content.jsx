@@ -7,7 +7,7 @@ const Content = () => {
     const [ products, setProducts ] = useState([])
 
     useEffect(()=>{
-        axios("http://localhost:8080/api/products")
+        axios("https://coderserver-1cn9.onrender.com/api/products")
         .then(result => setProducts(result.data.response))
         .catch(error => console.log(error))
     },[])

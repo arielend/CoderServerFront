@@ -2,13 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
-@tailwind utilities;  
+@tailwind utilities;
 
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 62.5%;
 }
 
 :root {
@@ -27,19 +26,19 @@
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 2rem;
 }
 
 h2 {
-  font-size: 4rem;
+  font-size: 1.8rem;
 }
 
 h3 {
-  font-size: 3rem;
+  font-size: 1.6rem;
 }
 
 p {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
 }
 
 @media (prefers-color-scheme: light) {
@@ -53,4 +52,45 @@ p {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.profileCard{
+  border:none;
+
+  position:relative;
+  overflow:hidden;
+  border-radius:8px;
+  /* cursor:pointer; */
+}
+
+.profileCard:before{
+
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:4px;
+  height:100%;
+  background-color:lightgrey;
+  transform:scaleY(1);
+  transition:all 0.5s;
+  transform-origin: bottom
+}
+
+.profileCard:after{
+
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:4px;
+  height:100%;
+  background-color:#ebff6a;
+  transform:scaleY(0);
+  transition:all 0.5s;
+  transform-origin: bottom
+}
+
+.profileCard:hover::after{
+  transform:scaleY(1);
 }
