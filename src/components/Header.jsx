@@ -9,19 +9,24 @@ const Header = () => {
 
 	const [user, setUser ] = useState({online: false})
 	const navigate = useNavigate()
-	const userData = Cookies.get('user')
+
+    const getUserFromCookie = () => {
+        try {
+            const userData = Cookies.get('user')
+            if(userData) {
+                return JSON.parse(userData)
+            }
+        } catch (error) {
+            console.error('Error parsing user data from cookie:', error)
+            return null
+        }
+    }
 
 	useEffect(()=>{
-        console.log('User data from cookie, ', userData)
-		if(userData){
-            try {
-                const parsedUserData = JSON.parse(userData)
-                console.log('El parsedUserData, ', parsedUserData)
-                setUser(JSON.parse(userData))                
-            } catch (error) {
-                console.error('Error parsing userData:', error);
-            }
-		}}, [userData]
+        const userFromCookie = getUserFromCookie()        
+		if(userFromCookie){
+            setUser(userFromCookie)
+		}}, []
 	)
 
 	const signoutHandler = async () => {
