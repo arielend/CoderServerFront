@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom'
 import Loader from '../components/Loader/Loader.jsx'
 
 const Login = () => {
@@ -116,9 +117,9 @@ const Login = () => {
                                     Login with your social media account
                                 </h6>
                                 <div className="flex gap-3 justify-center items-center">
-                                    <a href="/api/sessions/google" type="button" className="image_button" >
+                                    <Link to={"/api/sessions/google"} className="image_button" >
                                         <img src="https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Fgoogle_green_icon.svg?alt=media&token=1dfb9d68-d3f4-4b07-874b-42aa14002e40" alt="Google Icon" className="h-[25px]" />
-                                    </a>
+                                    </Link>
                                     <button type="button" className="image_button" >
                                         <img src="https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Fgithub_green_icon.svg?alt=media&token=4e64c6f3-0bf5-4748-bef0-9ac29a81142d" alt="GitHub Icon" className="h-[25px]" />
                                     </button>
@@ -129,14 +130,14 @@ const Login = () => {
                     <div className="bg-transparent">
                         <div className="flex justify-center links text-white text-button">
                             Don't have an account?
-                            <a href="/register" className="text-csGreen text-button ms-4" style={{  textDecoration: 'none', }} >
+                            <Link to={'/register'} className="text-csGreen text-button ms-4 no-underline" title="Sign Up">
                                 Sign Up
-                            </a>
+                            </Link>
                         </div>
                         <div className="flex justify-center">
-                            <a href="/password" className="text-csGreen text-button ms-4" style={{ textDecoration: 'none', }} >
+                            <Link to={'/password'} className="text-csGreen text-button ms-4 no-underline" title="Forgot">
                                 Forgot your password?
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
