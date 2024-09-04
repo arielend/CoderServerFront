@@ -12,6 +12,7 @@ const Header = () => {
 
     const getUserFromCookie = () => {
         try {
+            console.log('Que onda el user en cookie?');
             const userData = Cookies.get('user')
             if(userData) {
                 return JSON.parse(userData)
@@ -72,8 +73,6 @@ const Header = () => {
         }
 	}
     
-    console.log('User seted: ', user)
-
 	return (
         <header className="flex justify-between items-center w-full py-4 px-6 ">
             <div className="flex justify-between items-center">
