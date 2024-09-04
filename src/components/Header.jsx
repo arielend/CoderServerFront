@@ -14,6 +14,7 @@ const Header = () => {
         try {
             console.log('Que onda el user en cookie?');
             const userData = Cookies.get('user')
+            console.log('User parsed: ', userData);
             if(userData) {
                 return JSON.parse(userData)
             }
