@@ -19,7 +19,7 @@ const PasswordReset = () => {
             setIsLoading(true)
 
             const data = { email }
-            const url = 'http://localhost:9000/api/sessions/password'
+            const url = 'https://coderserver-1cn9.onrender.com/api/sessions/password'
             const response = await axios.post(url, data, { withCredentials: true })
 
             console.log('El response en reset: ', response)
@@ -61,7 +61,7 @@ const PasswordReset = () => {
     }
     
     return(
-        <div className="flex flex-col justify-center items-center h-[100vh] bg-[url('https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/bg%2FSite_BG.webp?alt=media&token=7ac589cc-94df-4ee6-b1ff-814d81296ff0')] bg-cover bg-fixed">
+        <div className="flex flex-col justify-center items-center h-[100vh] bg-[url('https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/bg%2Fbg1.webp?alt=media&token=bf095722-f72e-4ed2-837a-ba7bbf7fe35b')] bg-cover bg-fixed">
             { isLoading && <Loader/> }
             <h1 className="text-white text-center my-2">Did you forget your Password?</h1>
             <div className="flex justify-center">

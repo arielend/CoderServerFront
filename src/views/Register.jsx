@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import Loader from '../components/Loader/Loader'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
 
@@ -19,8 +20,10 @@ const Register = () => {
         setIsLoading(true)
 
         const data = { email, username, password, photo }
-        const url = 'http://localhost:9000/api/sessions/register'
+        const url = 'https://coderserver-1cn9.onrender.com/api/sessions/register'
         const response = await axios.post(url, data, { withCredentials: true })
+
+        console.log('Response en register: ', response)
 
         setIsLoading(false)
 
@@ -34,11 +37,18 @@ const Register = () => {
                 navigate('/verify')
             }, 2500)
         }
+        else{
+            Swal.fire({
+                title: 'Register fails!',
+                text: response.data.message,
+                icon: 'error'
+            })
+        }
 
     }
     
     return(
-        <div className="flex flex-col justify-center items-center h-[100vh] bg-[url('https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/bg%2FSite_BG.webp?alt=media&token=7ac589cc-94df-4ee6-b1ff-814d81296ff0')] bg-cover bg-fixed">
+        <div className="flex flex-col justify-center items-center h-[100vh] bg-[url('https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/bg%2Fbg2.webp?alt=media&token=1b5d7a5c-de3b-40d6-9da3-9b8592b82ba6')] bg-cover bg-fixed">
             { isLoading && <Loader/> }
             <h1 className="text-white text-center my-2">Create your account.</h1>
             <div className="flex justify-center">
@@ -134,7 +144,7 @@ const Register = () => {
                                 go Login
                             </a>
                         </div>
-                        <div className="flex justify-center">
+                        <div className="flex justify-center">                            
                             <a href="#" className="text-csGreen text-button ms-4" style={{ textDecoration: 'none', }} >
                                 Forgot your password?
                             </a>

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
-@tailwind utilities;  
+@tailwind utilities;
 
 *{
   margin: 0;
@@ -60,11 +60,11 @@ p {
   position:relative;
   overflow:hidden;
   border-radius:8px;
-  cursor:pointer;
+  /* cursor:pointer; */
 }
 
 .profileCard:before{
-  
+
   content:"";
   position:absolute;
   left:0;
@@ -78,7 +78,7 @@ p {
 }
 
 .profileCard:after{
-  
+
   content:"";
   position:absolute;
   left:0;

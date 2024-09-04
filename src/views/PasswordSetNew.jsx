@@ -18,10 +18,12 @@ const PasswordSetNew = () => {
         setIsLoading(true)
 
         const data = { email, password, verifyCode }
-        const url = 'http://localhost:9000/api/sessions/password'
+        const url = 'https://coderserver-1cn9.onrender.com/api/sessions/password'
         const response = await axios.put(url, data, { withCredentials: true })
 
-        if(response?.data.statusCode !== 200){
+        console.log('El response en save pass: ', response)
+
+        if(response?.data.statusCode !== 204){
             Swal.fire({
                 title: 'Error',
                 text: response.data.message,
@@ -29,7 +31,7 @@ const PasswordSetNew = () => {
             })
         }
 
-        if(response?.data.statusCode === 200) {
+        if(response?.data.statusCode === 204) {
             Swal.fire({
                 title: 'Succes',
                 text: response.data.message,

@@ -13,7 +13,7 @@ export default {
         }
       },
       backgroundColor:{
-        'glass': 'rgba(255, 255, 255, 0.1)'
+        'glass': 'rgba(5,5,5, 0.3)'
       },
       dropShadow:{
         'green': '5px 5px 10px #EAFF6A',

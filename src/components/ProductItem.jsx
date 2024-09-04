@@ -15,7 +15,7 @@ const ProductItem = ({ title, photo, price, _id }) => {
                     </button>
                 </div>
             </div>            
-            <p className="font-bold text-orange text-price mb-12">U$S {price}</p>
+            <p className="font-bold text-orange text-price mb-12">USD {price}</p>
             <Link to={`/products/${_id}`} className="card_button transition transition-color duration-200">View Details</Link>
         </div>
     )

@@ -11,11 +11,9 @@ const Verify = () => {
     const verify_handler = async () => {
 
         const data = { email, verifyCode }
-        const url = 'http://localhost:9000/api/sessions/verify'
+        const url = 'https://coderserver-1cn9.onrender.com/api/sessions/verify'
         const response = await axios.post(url, data)
-
-        console.log('Que trae el response de axios: ', response);
-        
+                
         if(response?.data.statusCode === 200) {
             navigate('/')
         }

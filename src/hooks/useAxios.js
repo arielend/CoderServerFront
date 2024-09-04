@@ -6,11 +6,14 @@ const useAxios = ({
     method,
     body,
     headers,
+    withCredentials = false,
     immediate = true,
     queries = [],
     filter = {}
 }) => {
-    const [ data, setData ] = useState(null)
+    const [ response, setResponse ] = useState(null)
+    //Uso de response en lugar de data
+    // const [ data, setData ] = useState(null)
     const [ loading, setLoading ] = useState(false)
     const [ error, setError ] = useState(null)
 
@@ -36,14 +39,17 @@ const useAxios = ({
             url: fullURL,
             method,
             headers,
-            data: body
+            data: body,
+            withCredentials,
         }
 
         try {
             const response = await axios(config)
-            setData(response.data)
+            //Uso de response en lugar de data
+            //setData(response.data)
+            setResponse(response.data)
         } catch (error) {
-            setError(error)
+            setError(error.response ? error.response.data : error.message)
         } finally {
             setLoading(false)
         }
@@ -55,7 +61,7 @@ const useAxios = ({
         }
     },[fullURL, method])
 
-    return { data, loading, error, refetch: fetchData}
+    return { response, loading, error, refetch: fetchData}
 }
 
 export default useAxios

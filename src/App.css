@@ -3,7 +3,7 @@
 }
 
 .green_button{
-    @apply bg-csGreen hover:bg-black text-black hover:text-csGreen px-8 py-2 border border-black hover:border-csGreen rounded rounded-lg;
+    @apply bg-csGreen hover:bg-black text-black hover:text-csGreen px-8 py-2 border border-black hover:border-csGreen rounded rounded-lg active:bg-darkgrey;
 }
 
 .dark_button{

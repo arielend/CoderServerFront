@@ -13,11 +13,12 @@ const Products = () => {
     const [ limit, setLimit ] = useState(10)
     const [ filter, setFilter ] = useState({})
 
-    const { data, loading, error, refetch } = useAxios({
-        url: 'http://localhost:9000/api/products',
+    const { response, loading, error, refetch } = useAxios({
+        url: 'https://coderserver-1cn9.onrender.com/api/products',
         method: 'get',
         immediate: true,
         filter: filter,
+        withCredentials: true,
         queries:[
             { key: 'page', value: page},
             { key: 'limit', value: limit},
@@ -25,15 +26,15 @@ const Products = () => {
             { key: 'nextPage', value: nextPage},
         ]
     })
-
+    
     useEffect(()=>{
-        if(data){
-            setNextPage(data.response.nextPage)
-            setPrevPage(data.response.prevPage)
-            setProducts(data.response.docs)
+        if(response){
+            setNextPage(response.response.nextPage)
+            setPrevPage(response.response.prevPage)
+            setProducts(response.response.docs)
         }
     },[
-        data, loading, error
+        response, loading, error
     ])
 
     const PrevClickHandler = () => {

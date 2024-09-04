@@ -16,7 +16,7 @@ const Login = () => {
         setIsLoading(true)       
 
         const data = { email, password }
-        const url = 'http://localhost:9000/api/sessions/login'
+        const url = 'https://coderserver-1cn9.onrender.com/api/sessions/login'
         const response = await axios.post(url, data, { withCredentials: true })
         setIsLoading(false)
 
@@ -67,7 +67,7 @@ const Login = () => {
     }
 
     return (
-        <div className="flex flex-col justify-center items-center h-[100vh] bg-[url('https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/bg%2FSite_BG.webp?alt=media&token=7ac589cc-94df-4ee6-b1ff-814d81296ff0')] bg-cover bg-fixed">
+        <div className="flex flex-col justify-center items-center h-[100vh] bg-[url('https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/bg%2Fbg3.webp?alt=media&token=02ab5478-a99d-44cc-83b5-feaddf537aa7')] bg-cover bg-fixed">
             { isLoading && <Loader/> }
             <h1 className="text-white text-center my-2">Login page</h1>
             <div className="flex justify-center">
