@@ -98,6 +98,7 @@ const Login = () => {
                                 <input id="password"
                                     name="password"
                                     type="password"
+                                    autoComplete='current-password'
                                     className="text-white h-12 px-4 text-button rounded rounded-lg bg-['rgba(255, 255, 255, 0.379)'] box-shadow-['0 4px 30px rgba(0, 0, 0, 0.1)'] backdropBlur-['(5px)']"
                                     placeholder="password"
                                     value={password}
