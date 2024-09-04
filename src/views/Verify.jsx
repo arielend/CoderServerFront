@@ -65,9 +65,9 @@ const Verify = () => {
                     <div className="bg-transparent">
                         <div className="flex justify-center links text-white text-button">
                             I'm a verified user!
-                            <a href="/login" className="text-csGreen text-button ms-4" style={{  textDecoration: 'none', }} >
-                                Login
-                            </a>
+                            <Link to={'/password'} className="text-csGreen text-button ms-4 no-underline" title="Forgot">
+                                Forgot your password?
+                            </Link>
                         </div>
                     </div>
                 </div>

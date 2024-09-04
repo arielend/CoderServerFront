@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import Loader from '../components/Loader/Loader'
+import { Link } from 'react-router-dom'
 
 const PasswordReset = () => {
 
@@ -99,9 +100,9 @@ const PasswordReset = () => {
                     <div className="bg-transparent">
                         <div className="flex justify-center links text-white text-button">
                             Did you remember it?
-                            <a href="/login" className="text-csGreen text-button ms-4" style={{  textDecoration: 'none', }} >
-                                go Login
-                            </a>
+                            <Link to={'/login'} className='text-csGreen text-button ms-4 no-underline' title='go login'>
+                                Go login
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -140,14 +140,14 @@ const Register = () => {
                     <div className="bg-transparent">
                         <div className="flex justify-center links text-white text-button">
                             Do you have an account?
-                            <a href="/login" className="text-csGreen text-button ms-4" style={{  textDecoration: 'none', }} >
-                                go Login
-                            </a>
+                            <Link to={'/login'} className='text-csGreen text-button ms-4 no-underline' title='go login'>
+                                Go login
+                            </Link>
                         </div>
                         <div className="flex justify-center">                            
-                            <a href="#" className="text-csGreen text-button ms-4" style={{ textDecoration: 'none', }} >
+                            <Link to={'/password'} className="text-csGreen text-button ms-4 no-underline" title="Forgot">
                                 Forgot your password?
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
