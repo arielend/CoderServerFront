@@ -8,7 +8,7 @@ import Swal from 'sweetalert2'
 
 const Header = () => {
 
-	const [user, setUser ] = useState({online: false})
+	const [user, setUser ] = useState({online:false , role:'silent' })
     const [ isLoading, setIsLoading ] = useState(false)
 	const navigate = useNavigate()
     
@@ -19,11 +19,11 @@ const Header = () => {
             try {
                 const result = await axios.get(url, {withCredentials: true})
                 console.log('El result de axios get user', result)
-                if(result.data.statusCode != 404){
+                if(result.data.statusCode == 200){
                     setUser(result.data.response)
                 }
             } catch (error) {
-                setUser({online: false})
+                setUser({online:false , role:'silent' })
                 console.log(error)
             } finally {
                 setIsLoading(false)
@@ -35,7 +35,7 @@ const Header = () => {
 
 	const signoutHandler = async () => {
 
-        setUser({online:false})		
+        setUser({online:false , role:'silent' })		
         const url = 'https://coderserver-1cn9.onrender.com/api/sessions/signout'
         const response = await axios.post(url, {}, { withCredentials: true })
 
@@ -101,7 +101,7 @@ const Header = () => {
                         </Link>
                     </li>
                     {
-						(user && (user?.role != 'admin')) &&
+						(user && (user.role != 'admin')) &&
                         <li>
                             <Link to={'/createProducts'} className="nav_link" title="createProduct" >
                                 Create Product
@@ -115,7 +115,7 @@ const Header = () => {
                     {user.online ? (
                         <>
 							{
-								(user && (user?.role != 'admin')) &&
+								user.role != 'admin' &&
 								<li>
 									<Link to="/cart">
 										<img src="https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Fcart_icon.svg?alt=media&token=4bdd38d2-fcf3-41bd-8c88-02116bf5ccb1"
@@ -127,8 +127,8 @@ const Header = () => {
                                 <Link to="/profile" className='flex flex-col justify-center items-center'>
                                     <img src="https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Fuser_icon.svg?alt=media&token=fde90760-8809-46a5-a0ed-1ac290ddd72b"
                                         className="h-12" />
-									<span>{user?.role != 'admin' && user?.username}</span>
-									<h6 className='font-bold'>{user?.role == 'admin' && user.role.toUpperCase()}</h6>
+									<span>{user.role != 'admin' && user.username}</span>
+									<h6 className='font-bold'>{user.role == 'admin' && user.role.toUpperCase()}</h6>
                                 </Link>
                             </li>
                             <li>
