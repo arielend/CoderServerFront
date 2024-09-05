@@ -15,9 +15,10 @@ const Header = () => {
 	useEffect(()=>{
         const fetchUserData = async () => {
             setIsLoading(true)
-            const url = `https://coderserver-1cn9.onrender.com/api/users`
+            const url = `https://coderserver-1cn9.onrender.com/api/users/inSession`
             try {
-                const result = await axios.get(url)
+                const result = await axios.get(url, {withCredentials: true})
+                console.log('El result de axios get user')
                 if(result.data.statusCode != 404){
                     setUser(result.data.response)
                 }
