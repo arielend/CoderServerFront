@@ -101,7 +101,7 @@ const Header = () => {
                         </Link>
                     </li>
                     {
-						user.role == 'admin' &&
+						(user && (user?.role != 'admin')) &&
                         <li>
                             <Link to={'/createProducts'} className="nav_link" title="createProduct" >
                                 Create Product
@@ -115,7 +115,7 @@ const Header = () => {
                     {user.online ? (
                         <>
 							{
-								(user && (user.role != 'admin')) &&
+								(user && (user?.role != 'admin')) &&
 								<li>
 									<Link to="/cart">
 										<img src="https://firebasestorage.googleapis.com/v0/b/coderserver-1ccaf.appspot.com/o/icons%2Fcart_icon.svg?alt=media&token=4bdd38d2-fcf3-41bd-8c88-02116bf5ccb1"
