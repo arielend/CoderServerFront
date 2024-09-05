@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import Loader from './Loader/Loader'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import Swal from 'sweetalert2'
@@ -8,28 +9,27 @@ import Swal from 'sweetalert2'
 const Header = () => {
 
 	const [user, setUser ] = useState({online: false})
+    const [ isLoading, setIsLoading ] = useState(false)
 	const navigate = useNavigate()
-
-    const getUserFromCookie = () => {
-        try {
-            console.log('Que onda el user en cookie?');
-            const userData = Cookies.get('user')
-            console.log('User parsed: ', userData);
-            if(userData) {
-                return JSON.parse(userData)
-            }
-        } catch (error) {
-            console.error('Error parsing user data from cookie:', error)
-            return null
-        }
-    }
-
+    
 	useEffect(()=>{
-        const userFromCookie = getUserFromCookie()
-        console.log('El user en la cookie: ', userFromCookie)
-		if(userFromCookie){
-            setUser(userFromCookie)
-		}}, []
+        const fetchUserData = async () => {
+            setIsLoading(true)
+            const url = `https://coderserver-1cn9.onrender.com/api/users`
+            try {
+                const result = await axios.get(url)
+                if(result.data.statusCode != 404){
+                    setUser(result.data.response)
+                }
+            } catch (error) {
+                setUser({online: false})
+                console.log(error)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+        fetchUserData()
+    }, []
 	)
 
 	const signoutHandler = async () => {
@@ -74,6 +74,12 @@ const Header = () => {
             })
         }
 	}
+
+    if(isLoading) {
+        return(
+            <Loader/>
+        )
+    }
     
 	return (
         <header className="flex justify-between items-center w-full py-4 px-6 ">
