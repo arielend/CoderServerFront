@@ -36,7 +36,7 @@ const Header = () => {
     useEffect ( ()=>{
         const fetchData = async () => {
             setIsLoading(true)
-            const url = `https://coderserver-1cn9.onrender.com/api/users/cookies/getCookies`
+            const url = `https://coderserver-1cn9.onrender.com/api/cookies/getCookies`
             try {
                 const response = await axios.get(url, {withCredentials: true})
                 console.log('El response de axios get cookies', response)                
