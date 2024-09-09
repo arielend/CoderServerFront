@@ -12,53 +12,36 @@ const Header = () => {
     const [ isLoading, setIsLoading ] = useState(false)
 	const navigate = useNavigate()
     
-	// useEffect(()=>{
-    //     const fetchUserData = async () => {
-    //         setIsLoading(true)
-    //         const url = `https://coderserver-1cn9.onrender.com/api/users/inSession`
-    //         try {
-    //             const result = await axios.get(url, {withCredentials: true})
-    //             console.log('El result de axios get user', result)
-    //             if(result.data.statusCode == 200){
-    //                 setUser(result.data.response)
-    //             }
-    //         } catch (error) {
-    //             setUser({online:false , role:'silent' })
-    //             console.log(error)
-    //         } finally {
-    //             setIsLoading(false)
-    //         }
-    //     }
-    //     fetchUserData()
-    // }, []
-	// )
-
-    useEffect ( ()=>{
-        const fetchData = async () => {
-            setIsLoading(true)
-            const url = `https://coderserver-1cn9.onrender.com/api/cookies/getCookies`
-            try {
-                const response = await axios.get(url, {withCredentials: true})
-                console.log('El response de axios get cookies', response)                
-            } catch (error) {
-                setUser({online:false , role:'silent' })
-                console.log(error)
-            } finally {
-                setIsLoading(false)
+    const getUserFromCookie = () => {
+        try {
+            const userData = Cookies.get('user')
+            if(userData){
+                return JSON.parse(userData)
             }
+        } catch (error) {
+            console.log('Error parsisng user from cookie: ', error)
         }
-        fetchData()
+    }
+
+	useEffect(()=>{
+        const userFromCookie = getUserFromCookie()
+        if(userFromCookie){
+            setUser(userFromCookie)
+        }
     }, []
-    )
-
-
-
+	)
 
 	const signoutHandler = async () => {
 
         setUser({online:false , role:'silent' })		
         const url = 'https://coderserver-1cn9.onrender.com/api/sessions/signout'
-        const response = await axios.post(url, {}, { withCredentials: true })
+        const options = {
+            headers: {
+                "content-type": "application/json"
+            },
+            withCredentials: true
+        }
+        const response = await axios.post(url, {}, options)
 
         console.log('El response de signout: ', response)
         

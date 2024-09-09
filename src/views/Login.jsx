@@ -17,8 +17,14 @@ const Login = () => {
         setIsLoading(true)       
 
         const data = { email, password }
+        const options = {
+            headers: {
+                "content-type": "application/json"
+            },
+            withCredentials: true
+        }
         const url = 'https://coderserver-1cn9.onrender.com/api/sessions/login'
-        const response = await axios.post(url, data, { withCredentials: true })
+        const response = await axios.post(url, data, options)
         setIsLoading(false)
 
         if(response?.data.statusCode === 200) {
