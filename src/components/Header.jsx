@@ -25,6 +25,7 @@ const Header = () => {
 
 	useEffect(()=>{
         const userFromCookie = getUserFromCookie()
+        console.log('El user de la cookie: ', userFromCookie)
         if(userFromCookie){
             setUser(userFromCookie)
         }
