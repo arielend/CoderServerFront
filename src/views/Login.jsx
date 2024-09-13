@@ -25,7 +25,6 @@ const Login = () => {
         }
         const url = 'https://coderserver-1cn9.onrender.com/api/sessions/login'
         const response = await axios.post(url, data, options)
-        console.log('Response del Login: ', response)
         setIsLoading(false)
 
         if(response?.data.statusCode === 200) {

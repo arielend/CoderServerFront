@@ -106,7 +106,7 @@ const Header = () => {
                         </Link>
                     </li>
                     {
-						(user && (user.role != 'admin')) &&
+						(user && (user.role == 'admin')) &&
                         <li>
                             <Link to={'/createProducts'} className="nav_link" title="createProduct" >
                                 Create Product
